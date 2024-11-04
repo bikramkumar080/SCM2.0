@@ -60,9 +60,13 @@ public class SecurityConfig {
             authorize.anyRequest().permitAll();
         });
 
+        // httpSecurity.formLogin(Customizer.withDefaults());
+
+        httpSecurity.csrf(AbstractHttpConfigurer::disable);
         //form login
         httpSecurity.formLogin(formLogin ->{
             formLogin.loginPage("/login")
+            .loginProcessingUrl("/authenticate")
             .successForwardUrl("/user/dashboard")
             .failureForwardUrl("/login?error=true")
             .usernameParameter("email")
@@ -70,7 +74,6 @@ public class SecurityConfig {
         });
 
         //form logout
-        httpSecurity.csrf(AbstractHttpConfigurer::disable);
         httpSecurity.logout(logout -> {
             logout.logoutUrl("/logout")
             .logoutSuccessUrl("/login?logout=true");
