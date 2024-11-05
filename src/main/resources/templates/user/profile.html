@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
-    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="profile-container">
@@ -12,14 +11,14 @@
             <h1>User Profile</h1>
         </div>
         <div class="profile-content">
-            <div class="profile-picture">
-                <img src="profile-picture.jpg" alt="Profile Picture">
+            <div class="profile-picture" style="width: 150px; height: 150px; overflow: hidden;">
+                <img th:src="@{${loggedInUser.profilePic}}" alt="Profile Picture" style="width: 100%; height: auto;">
             </div>
             <div class="profile-details">
-                <h2>John Doe</h2>
-                <p>Email: john.doe@example.com</p>
-                <p>Location: New York, USA</p>
-                <p>Bio: Software engineer with a passion for developing innovative programs that expedite the efficiency and effectiveness of organizational success.</p>
+                <h2 data-th-text="${loggedInUser.name}" > </h2>
+                <p data-th-text="${loggedInUser.email}" > </p>
+                <p data-th-text="${loggedInUser.about}" > </p>
+                <p data-th-text="${loggedInUser.provider}" > </p>
             </div>
         </div>
     </div>
