@@ -37,6 +37,9 @@ public class SecurityConfig {
     @Autowired
     private SecurityCustomUserDetailService securityCustomUserDetailService;
 
+    @Autowired
+    private OauthAuthenticationSuccessHandler oauthAuthenticationSuccessHandler;
+
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
@@ -68,7 +71,7 @@ public class SecurityConfig {
             formLogin.loginPage("/login")
             .loginProcessingUrl("/authenticate")
             .successForwardUrl("/user/dashboard")
-            .failureForwardUrl("/login?error=true")
+            // .failureForwardUrl("/login?error=true")
             .usernameParameter("email")
             .passwordParameter("password");
         });
@@ -79,6 +82,11 @@ public class SecurityConfig {
             .logoutSuccessUrl("/login?logout=true");
         });
 
+        //oauth configuration
+        httpSecurity.oauth2Login(oauth -> {
+            oauth.loginPage("/login")
+            .successHandler(oauthAuthenticationSuccessHandler);
+        });
         return httpSecurity.build();
     }
 }
