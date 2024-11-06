@@ -105,7 +105,7 @@ public class OauthAuthenticationSuccessHandler implements AuthenticationSuccessH
             logger.info("User saved in the DB successfully" + dbuser.getEmail()); 
         }
 
-        response.sendRedirect("/user/dashboard");
+        response.sendRedirect("/user/profile");
     }
 
 }

@@ -1,26 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <title data-th-text="${loggedInUser.name}+' | SCM'" >Profile Page</title>
 </head>
 <body>
-    <div class="profile-container">
-        <div class="profile-header">
-            <h1>User Profile</h1>
-        </div>
-        <div class="profile-content">
-            <div class="profile-picture" style="width: 150px; height: 150px; overflow: hidden;">
-                <img th:src="@{${loggedInUser.profilePic}}" alt="Profile Picture" style="width: 100%; height: auto;">
-            </div>
-            <div class="profile-details">
-                <h2 data-th-text="${loggedInUser.name}" > </h2>
-                <p data-th-text="${loggedInUser.email}" > </p>
-                <p data-th-text="${loggedInUser.about}" > </p>
-                <p data-th-text="${loggedInUser.provider}" > </p>
-            </div>
-        </div>
+    <div id="content">
+        <h1>Welcome to profile page</h1>
     </div>
+    <script>
+        console.log('Profile page script');
+    </script>
 </body>
 </html>
