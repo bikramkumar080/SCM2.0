@@ -5,7 +5,14 @@
 </head>
 <body>
     <div id="content">
-        <h1>Welcome to profile page</h1>
+
+        <div th:if="${loggedInUser}">
+            <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+        </div>
+
+        <div style="padding-left: 270px; padding-top: 70px;">
+            <h1 class="text-3xl">Welcome to profile page</h1>
+        </div>
     </div>
     <script>
         console.log('Profile page script');
