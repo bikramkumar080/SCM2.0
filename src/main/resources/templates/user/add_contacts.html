@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}">
+<head>
+    <title data-th-text="${loggedInUser.name}+' | SCM'" >Dashboard Page</title>
+</head>
+<body>
+    <div id="content" style="padding-top: 70px;">
+
+        <div th:if="${loggedInUser}">
+            <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+        </div>
+
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <div
+                class="block p-6 mb-10 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-1000 dark:bg-gray-600 dark:border-gray-700">
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Add New Contact</h5>
+                <p class="font-normal text-gray-700 dark:text-gray-400">Your contacts will be stored here you can directly mail your client from here</p>
+
+                <form method="post" data-th-action="@{'/user/contacts/add'}" data-th-object="${contactForm}">
+                    <!-- Contact name -->
+                    <div class="mb-3 mt-3">
+                        <label for="name"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact Name</label>
+                        <input data-th-field="*{name}" type="text" name="name"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="Contact's name here" required />
+                        <p class="text-red-600 px-1 py-1 font-plain"></p>
+                    </div>
+
+                    <!-- Contact email -->
+                    <div class="mb-3">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact Email</label>
+                        <input type="email" data-th-field="*{email}" name="email"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="example@gmail.com" required />
+                        <p class="text-red-600 px-1 py-1 font-plain"></p>
+                    </div>
+
+                    <!-- Contact phone number -->
+                    <div class="mb-3">
+                        <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact Phone Number</label>
+                        <input type="text" data-th-field="*{phoneNumber}" name="phone"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="9876897654" required />
+                        <p class="text-red-600 px-1 py-1 font-plain"></p>
+                    </div>
+
+                    <!-- Contact's address -->
+                    <label for="about" class="block mb-3 text-sm font-medium text-gray-900 dark:text-white">Contact Address</label>
+                    <textarea data-th-field="*{address}" rows="6"
+                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Write Contact's address here..."></textarea>
+
+                    <!-- Contact's description -->
+                    <label for="about" class="block mb-3 mt-3 text-sm font-medium text-gray-900 dark:text-white">Contact Description</label>
+                    <textarea data-th-field="*{description}" rows="6"
+                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Write Contact's description here..."></textarea>
+
+                    <!-- Contact social links -->
+                    <div class="social-links-container mt-3">
+                        <div class="flex space-x-2">
+                            <div class="mb-3 flex items-center justify-center">
+                                <i class="fa-solid fa-globe flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                                <input type="text" data-th-field="*{websiteLink}" name="websiteLink"
+                                    class="ml-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Website here" required />
+                                <p class="text-red-600 px-1 py-1 font-plain"></p>
+                            </div>
+                            <div class="mb-3 flex items-center justify-center">
+                                <i class="fa-brands fa-linkedin flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                                <input type="text" data-th-field="*{linkedInLink}" name="linkedInLink"
+                                    class="ml-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="LinkedIn here" required />
+                                <p class="text-red-600 px-1 py-1 font-plain"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- File upload -->
+                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="small_size">Contact Image</label>
+                    <input class="block w-full mb-5 text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-500 dark:placeholder-gray-400" id="small_size" type="file">
+
+
+                    <!-- Checkbox -->
+                    <div class="flex items-center mt-3">
+                        <input data-th-field="*{favorite}" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Is this Contact is your favorite one?</label>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="mt-3">
+                        <button type="submit"
+                            class="md:order-2 text-white bg-gray-800 hover:bg-gray-500 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-gray-700 dark:focus:ring-blue-800">Add Contact</button>
+                        <button type="reset"
+                            class="md:order-2 text-white bg-red-600 hover:bg-gray-500 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-gray-700 dark:focus:ring-blue-900">Reset</button>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+
+    </div>
+    <script>
+        console.log('Profile page script');
+    </script>
+</body>
+</html>
