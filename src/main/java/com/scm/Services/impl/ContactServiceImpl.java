@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.scm.Services.ContactService;
 import com.scm.entities.Contact;
+import com.scm.entities.User;
 import com.scm.helpers.ResourceNotFoundException;
 import com.scm.repositories.ContactRepo;
 
@@ -54,6 +57,14 @@ public class ContactServiceImpl implements ContactService{
     @Override
     public List<Contact> getByUserId(String userId) {
         return contactRepo.findByUserId(userId);
+    }
+
+    @Override
+    public Page<Contact> getByUser(User user, int page, int size, String sortBy, String direction) {
+        Sort sort=direction.equals("asc")?Sort.by(sortBy).ascending():Sort.by(sortBy).descending();
+        
+        var pageable = org.springframework.data.domain.PageRequest.of(page, size, sort);
+        return contactRepo.findByUser(user,pageable);
     }
 
 }

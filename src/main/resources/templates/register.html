@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <div id="content">
+    <div id="content" style="padding-top: 70px;">
         <div style="display: flex; justify-content: center; align-items: center;">
             <div class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-1000 dark:bg-gray-600 dark:border-gray-700">
                 <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Sign Up here</h5>
@@ -18,7 +18,7 @@
                 <!-- Name -->
                 <div class="mb-3 mt-3">
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
-                    <input tyep="text" id="name" data-th-field="*{name}"
+                    <input type="text" id="name" data-th-field="*{name}"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Enter here" required />
                     <p data-th-if="${#fields.hasErrors('name')}"

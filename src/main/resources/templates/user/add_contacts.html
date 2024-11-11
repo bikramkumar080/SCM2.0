@@ -24,7 +24,8 @@
                         <input data-th-field="*{name}" type="text" name="name"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Contact's name here" required />
-                        <p class="text-red-600 px-1 py-1 font-plain"></p>
+                        <p data-th-if="${#fields.hasErrors('name')}"
+                        data-th-errors="*{name}" class="text-red-600 px-1 py-1 font-plain">Invalid Name</p>
                     </div>
 
                     <!-- Contact email -->
@@ -33,7 +34,8 @@
                         <input type="email" data-th-field="*{email}" name="email"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="example@gmail.com" required />
-                        <p class="text-red-600 px-1 py-1 font-plain"></p>
+                        <p data-th-if="${#fields.hasErrors('email')}"
+                        data-th-errors="*{email}" class="text-red-600 px-1 py-1 font-plain"></p>
                     </div>
 
                     <!-- Contact phone number -->
@@ -42,36 +44,39 @@
                         <input type="text" data-th-field="*{phoneNumber}" name="phone"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="9876897654" required />
-                        <p class="text-red-600 px-1 py-1 font-plain"></p>
+                        <p data-th-if="${#fields.hasErrors('phoneNumber')}"
+                        data-th-errors="*{phoneNumber}" class="text-red-600 px-1 py-1 font-plain"></p>
                     </div>
 
                     <!-- Contact's address -->
                     <label for="about" class="block mb-3 text-sm font-medium text-gray-900 dark:text-white">Contact Address</label>
-                    <textarea data-th-field="*{address}" rows="6"
+                    <textarea data-th-field="*{address}" rows="4"
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Write Contact's address here..."></textarea>
+                        placeholder="Write Contact's address here..." required></textarea>
+                        <p data-th-if="${#fields.hasErrors('address')}"
+                        data-th-errors="*{address}" class="text-red-600 px-1 py-1 font-plain"></p>
 
                     <!-- Contact's description -->
                     <label for="about" class="block mb-3 mt-3 text-sm font-medium text-gray-900 dark:text-white">Contact Description</label>
-                    <textarea data-th-field="*{description}" rows="6"
+                    <textarea data-th-field="*{description}" rows="4"
                         class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Write Contact's description here..."></textarea>
 
                     <!-- Contact social links -->
-                    <div class="social-links-container mt-3">
+                    <div class="social-links-container mt-4">
                         <div class="flex space-x-2">
                             <div class="mb-3 flex items-center justify-center">
                                 <i class="fa-solid fa-globe flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                                 <input type="text" data-th-field="*{websiteLink}" name="websiteLink"
                                     class="ml-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Website here" required />
+                                    placeholder="Website here"/>
                                 <p class="text-red-600 px-1 py-1 font-plain"></p>
                             </div>
                             <div class="mb-3 flex items-center justify-center">
                                 <i class="fa-brands fa-linkedin flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
                                 <input type="text" data-th-field="*{linkedInLink}" name="linkedInLink"
                                     class="ml-3 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-300 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="LinkedIn here" required />
+                                    placeholder="LinkedIn here" />
                                 <p class="text-red-600 px-1 py-1 font-plain"></p>
                             </div>
                         </div>
